@@ -55,8 +55,14 @@
             </nav>
 
             <div class="absolute left-0 flex-col items-center justify-center hidden w-full pb-8 mt-48 border-b border-gray-200 md:relative md:w-auto md:bg-transparent md:border-none md:mt-0 md:flex-row md:p-0 md:items-end md:flex md:justify-between">
-                <a href="#_"class="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-indigo-700 rounded shadow-md fold-bold lg:bg-white lg:text-black sm:w-full lg:shadow-none hover:shadow-xl">Log out</a>
-                <!-- <a href="#_"  class="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-indigo-700 rounded shadow-md fold-bold lg:bg-white lg:text-black sm:w-full lg:shadow-none hover:shadow-xl">Signup</a> -->
+                <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                    
+                    <a href="{{  route('logout') }}" onclick="event.preventDefault();
+                                            this.closest('form').submit();" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" >
+                        Log Out
+                    </a>
+                </form>                  
             </div>
 
             <div id="nav-mobile-btn"
@@ -78,7 +84,7 @@
             <div class="relative z-50 flex flex-col items-end justify-center w-full h-full lg:w-1/2 ms:pl-10 mt-2">
                 <div class="container relative left-0 w-full max-w-4xl lg:absolute xl:max-w-6xl lg:w-screen mt-2">
                     <!-- Image here with adjusted dimensions -->
-                    <img src="https://cdn.pixabay.com/photo/2015/01/16/15/00/concert-601537_1280.jpg" alt="Audience" class="object-cover w-96 h-72 max-w-full lg:max-w-4xl rounded-lg mt-12">
+                    <img src="https://images.pexels.com/photos/2240771/pexels-photo-2240771.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Audience" class="object-cover w-96 h-72 max-w-full lg:max-w-4xl rounded-lg mt-12">
                 </div>
             </div>
         </div>

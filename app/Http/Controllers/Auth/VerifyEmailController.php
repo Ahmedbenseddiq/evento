@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 
 class VerifyEmailController extends Controller
 {
@@ -23,6 +24,17 @@ class VerifyEmailController extends Controller
             event(new Verified($request->user()));
         }
 
+        $obj = User::find($request->user()->id);
+        $obj->status = 'active';
+        $obj->save();
+
+        if ($request->user()->role === 'client') {
+            return redirect()->intended(RouteServiceProvider::CLIENT_HOME.'?verified=1');
+        } elseif ($request->user()->role === 'organizer') {
+            return redirect()->intended(RouteServiceProvider::ORGANIZER_HOME.'?verified=1');
+        }
+        
+        
         return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
     }
 }

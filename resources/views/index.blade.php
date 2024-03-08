@@ -78,7 +78,7 @@
             <div class="relative z-50 flex flex-col items-end justify-center w-full h-full lg:w-1/2 ms:pl-10 mt-2">
                 <div class="container relative left-0 w-full max-w-4xl lg:absolute xl:max-w-6xl lg:w-screen mt-2">
                     <!-- Image here with adjusted dimensions -->
-                    <img src="https://cdn.pixabay.com/photo/2015/01/16/15/00/concert-601537_1280.jpg" alt="Audience" class="object-cover w-96 h-72 max-w-full lg:max-w-4xl rounded-lg mt-12">
+                    <img src="https://images.pexels.com/photos/2240771/pexels-photo-2240771.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Audience" class="object-cover w-96 h-72 max-w-full lg:max-w-4xl rounded-lg mt-12">
                 </div>
             </div>
         </div>

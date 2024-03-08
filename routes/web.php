@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminPanel\adminController;
 use App\Http\Controllers\organizerPanel\organizerController;
 use App\Http\Controllers\clientPanel\clientController;
+use App\Http\Controllers\dashboard\dashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [dashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -38,12 +37,12 @@ Route::middleware(['auth','role:admin'])->group(function () {
 });
 
 
-Route::middleware(['auth','role:admin'])->group(function () {
+Route::middleware(['auth','role:organizer'])->group(function () {
     Route::get('organizer/home',[organizerController::class, 'index'])->name('organizer.home');
 });
 
 
-Route::middleware(['auth','role:admin'])->group(function () {
+Route::middleware(['auth','role:client'])->group(function () {
     Route::get('client/home',[clientController::class, 'index'])->name('client.home');
 });
 

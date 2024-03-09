@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminPanel\adminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\organizerPanel\organizerController;
 use App\Http\Controllers\clientPanel\clientController;
 use App\Http\Controllers\dashboard\dashboardController;
@@ -34,6 +35,12 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('admin/home',[adminController::class, 'index'])->name('admin.home');
+    Route::get('admin/categories',[CategoryController::class, 'index'])->name('admin.categories');
+    Route::get('admin/createCategory',[CategoryController::class, 'create'])->name('admin.createCategory');
+    Route::post('admin/storeCategory',[CategoryController::class, 'store'])->name('admin.storeCategory');
+    Route::get('admin/{category}/editCategory',[CategoryController::class, 'edit'])->name('admin.editCategory');
+    Route::post('admin/{category}/updateCategory',[CategoryController::class, 'update'])->name('admin.updateCategory');
+    Route::delete('admin/{category}/destroyCategory',[CategoryController::class, 'destroy'])->name('admin.detroyCategory');
 });
 
 

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('event_id');
             $table->boolean('automatic_acceptance')->default(false);
             $table->enum('status', ['Confirmed', 'Pending', 'Canceled']);
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('event_id')->references('id')->on('events')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

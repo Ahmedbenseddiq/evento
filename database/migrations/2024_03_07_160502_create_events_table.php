@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->integer('available_seats');
             $table->unsignedBigInteger('organizer_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('organizer_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('organizer_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

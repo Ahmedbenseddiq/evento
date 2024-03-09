@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
+    <title>Categories</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -32,9 +32,8 @@
         <div class="py-4 text-gray-500 dark:text-gray-400">
           <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="#" > Evento </a>
           <ul class="mt-6">
-            <li class="relative px-6 py-3">
-              <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
-              <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="index.html">
+          <li class="relative px-6 py-3">
+              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="{{  route('admin.home')  }}">
                 <span class="ml-4">Dashboard</span>
               </a>
             </li>
@@ -54,13 +53,14 @@
               </a>
             </li>
             <li class="relative px-6 py-3">
-              <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="categories.html">
+              <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg" aria-hidden="true"></span>
+              <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100" href="">
                 <span class="ml-4">Categories</span>
               </a>
             </li>
           </ul>
         </div>
-      </aside>
+      </aside>  
       <!-- Mobile sidebar -->
       <!-- Backdrop -->
       <div
@@ -243,7 +243,7 @@
             <h2
               class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
             >
-              Dashboard
+              Categories
             </h2>
             <!-- Cards -->
             <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -292,7 +292,7 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Account balance
+                    Totla Organizers
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
@@ -318,7 +318,7 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    New sales
+                    Reservations
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
@@ -346,7 +346,34 @@
                   <p
                     class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
                   >
-                    Pending contacts
+                    Categories
+                  </p>
+                  <p
+                    class="text-lg font-semibold text-gray-700 dark:text-gray-200"
+                  >
+                    35
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
+              >
+                <div
+                  class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <p
+                    class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >
+                    Categories
                   </p>
                   <p
                     class="text-lg font-semibold text-gray-700 dark:text-gray-200"
@@ -356,120 +383,68 @@
                 </div>
               </div>
             </div>
-            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">Charts</h2>
-         
-            <div class="grid gap-6 mb-8 md:grid-cols-2">
-              <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">Revenue</h4>
-                <canvas id="pie"></canvas>
-                <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400" >
-                  <!-- Chart legend -->
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"
-                    ></span>
-                    <span>Shirts</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"
-                    ></span>
-                    <span>Shoes</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"
-                    ></span>
-                    <span>Bags</span>
-                  </div>
-                </div>
-              </div>
-              <div
-                class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
-              >
-                <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                  Traffic
-                </h4>
-                <canvas id="line"></canvas>
-                <div
-                  class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400"
-                >
-                  <!-- Chart legend -->
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"
-                    ></span>
-                    <span>Organic</span>
-                  </div>
-                  <div class="flex items-center">
-                    <span
-                      class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"
-                    ></span>
-                    <span>Paid</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
 
             <div class="relative mt-4 mb-4">
-                <a href="addEvent.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Add Event</a>
-              </div>
-            <!-- New Table -->
-            <div class="w-full overflow-hidden rounded-lg shadow-xs">
+                <a href="{{ route('admin.createCategory') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Add Category</a>
+            </div> 
+            <div class="mb-2 text-gray-600 !important">
+                @if (session()->has('success'))
+                    <div>
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
+            <div class="w-full mt-2 overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <table class="w-full whitespace-no-wrap">
                   <thead>
                       <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                          <th class="px-4 py-3">Id</th>
                           <th class="px-4 py-3">Title</th>
-                          <th class="px-4 py-3">Date</th>
-                          <th class="px-4 py-3">Status</th>
-                          <th class="px-4 py-3">Location</th>
-                          <th class="px-4 py-3">category</th>
-                          <th class="px-4 py-3">Seats</th>
+                          <th class="px-4 py-3">Creation date</th>
+                          <th class="px-4 py-3">Last Update</th>
                           <th class="px-4 py-3">Action</th>
                       </tr>
                   </thead>
                   <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                      <tr class="text-gray-700 dark:text-gray-400">
-                          <td class="px-4 py-3">
-                              <div class="flex items-center text-sm">
-                                  <!-- <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                      <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                  </div> -->
-                                  <div>
-                                      <p class="font-semibold">event name</p>
-                                      <p class="text-xs text-gray-600 dark:text-gray-400">name</p>
-                                  </div>
-                              </div>
-                          </td>
-                          <td class="px-4 py-3 text-sm">11/02/2026</td>
-                          <td class="px-4 py-3 text-xs"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">Approved</span></td>
-                          <td class="px-4 py-3 text-sm">oujda</td>
-                          <td class="px-4 py-3 text-sm">art</td>
-                          <td class="px-4 py-3 text-sm">56</td>
-                          <td class="px-4 py-3"> 
-                              <div class="flex">
-                                  <form method="POST" action="">
-                                  
-                                      <button type="submit" class="flex-1 p-1 mr-1 rounded-full bg-red-500 text-white cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                              <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17">
-                                          </svg>
-                                      </button>
-                                  </form>
-                                  <a href="editEvent.html" class="flex-1 p-1  text-white cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
-                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10">  
-                                      </svg>
-                                  </a>
-                              </div>
-                          </td>
+                    @foreach ($categories as $category)
+                    <tr class="text-gray-700 dark:text-gray-400">
+                        <td class="px-4 py-3">
+                            <div class="flex items-center text-sm">
+                                <div>
+                                    <p class="font-semibold">{{ $category->id }}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-4 py-3 text-sm">{{ $category->name }}</td>
+                        <td class="px-4 py-3 text-sm">{{ $category->created_at }}</td>
+                        <td class="px-4 py-3 text-sm">{{ $category->updated_at }}</td>
+                        <td class="px-4 py-3"> 
+                            <div class="flex">
+                                <form method="post" action="{{route('admin.detroyCategory', ['category'=>$category])}}">
+                                  @csrf
+                                  @method('DELETE')
+                                    <button type="submit" class="flex-1 p-1 mr-1 rounded-full bg-red-500 text-white cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17">
+                                        </svg>
+                                    </button>
+                                </form>
+                                <a href="{{ route('admin.editCategory', ['category'=>$category]) }}" class="flex-1 p-1  text-white cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10">  
+                                    </svg>
+                                </a>
+                            </div>
+                        </td>
+                        
                           
-                            
-                      </tr>
+                    </tr>
+                    @endforeach
                       <!-- More table rows -->
                   </tbody>
-              </table>
+                </table>
               </div>
             </div>
 

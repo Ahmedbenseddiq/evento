@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('reservation_id');
             $table->dateTime('generation_date');
             $table->enum('format', ['PDF', 'Email']);
-            $table->foreign('reservation_id')->references('id')->on('reservations');
+            $table->foreign('reservation_id')->references('id')->on('reservations')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

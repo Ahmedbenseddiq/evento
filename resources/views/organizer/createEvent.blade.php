@@ -31,44 +31,43 @@
                         </ul>
                     @endif
                 </div>
-                <form method="post" action="{{route('organizer.updateEvent', ['event'=>$event])}}">
+                <form method="post" action="{{route('organizer.storeEvent')}}">
                   @csrf
                     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                       <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-400" for="title">Title</label>
-                        <input id="title" name="title" value="{{$event->title}}" type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Title" />
+                        <input id="title" name="title" type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Title" />
                       </div>
                       <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-400" for="description">Description</label>
-                        <textarea id="description" name="description" rows="3" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-textarea" placeholder="Description">{{$event->description}}</textarea>
+                        <textarea id="description" name="description" rows="3" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-textarea" placeholder="Description"></textarea>
                       </div>
                       <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-400" for="date">Date</label>
-                        <input id="date" name="date" type="date" value="{{$event->date}}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Date" />
+                        <input id="date" name="date" type="date" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Date" />
                       </div>
                       <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-400" for="location">Location</label>
-                        <input id="location" name="location" value="{{$event->location}}" type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Location" />
+                        <input id="location" name="location" type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Location" />
                       </div>
                       <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-400" for="category">Category</label>
                         <select id="category" name="category_id" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-select">
                           @foreach($categories as $id => $title)
-                              <option value="{{ $id }}" {{ $id == $event->category_id ? 'selected' : '' }}>{{ $title }}</option>
+                              <option value="{{ $id }}">{{ $title }}</option>
                           @endforeach
                         </select>
-
                       </div>
                       <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-400" for="seats">Available Seats</label>
-                        <input id="seats" name="available_seats" type="number" value="{{$event->available_seats}}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Available Seats" />
+                        <input id="seats" name="available_seats" type="number" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Available Seats" />
                       </div>
                       <div>
                         <input id="organizer" name="organizer_id" type="hidden" value="{{ Auth::id() }}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"/>
                       </div>
                     </div>
                     <div class="flex justify-between mt-6"> 
-                      <button type="submit" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">Update Event</button>
+                      <button type="submit" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">Create Event</button>
                       <a href="{{ route('organizer.home') }}" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">Go Back</a>
                     </div>
                   </form>

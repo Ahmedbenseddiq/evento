@@ -263,7 +263,14 @@
             </div>
 
             <div class="relative mt-4 mb-4">
-              <a href="addEvent.html" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Add Event</a>
+              <a href="{{ route('organizer.createEvent') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Add Event</a>
+            </div>
+            <div class="mb-2 mt-2 text-gray-600 !important">
+                @if (session()->has('success'))
+                    <div>
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
 
             <div class="w-full overflow-hidden rounded-lg shadow-xs mt-10">
@@ -281,44 +288,40 @@
                       </tr>
                   </thead>
                   <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                      @foreach ($events as $event)
                       <tr class="text-gray-700 dark:text-gray-400">
                           <td class="px-4 py-3">
                               <div class="flex items-center text-sm">
-                                  <!-- <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                      <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                                  </div> -->
                                   <div>
-                                      <p class="font-semibold">event name</p>
-                                      <p class="text-xs text-gray-600 dark:text-gray-400">name</p>
+                                      <p class="font-semibold">{{$event->title}}</p>
                                   </div>
                               </div>
                           </td>
-                          <td class="px-4 py-3 text-sm">11/02/2026</td>
-                          <td class="px-4 py-3 text-xs"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">Approved</span></td>
-                          <td class="px-4 py-3 text-sm">oujda</td>
-                          <td class="px-4 py-3 text-sm">art</td>
-                          <td class="px-4 py-3 text-sm">56</td>
+                          <td class="px-4 py-3 text-sm">{{$event->date}}</td>
+                          <td class="px-4 py-3 text-xs"><span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">{{$event->status}}</span></td>
+                          <td class="px-4 py-3 text-sm">{{$event->location}}</td>
+                          <td class="px-4 py-3 text-sm">{{$event->category->name}}</td>
+                          <td class="px-4 py-3 text-sm">{{$event->available_seats}}</td>
                           <td class="px-4 py-3"> 
                               <div class="flex">
-                                  <form method="POST" action="">
-                                  
+                                  <form method="post" action="{{route('organizer.destroyEvent', ['event'=>$event])}}">
+                                  @csrf
+                                  @method('delete')
                                       <button type="submit" class="flex-1 p-1 mr-1 rounded-full bg-red-500 text-white cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                               <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m6 4.125 2.25 2.25m0 0 2.25 2.25M12 13.875l2.25-2.25M12 13.875l-2.25 2.25M3.375 7.5h17">
                                           </svg>
                                       </button>
                                   </form>
-                                  <a href="editEvent.html" class="flex-1 p-1  text-white cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+                                  <a href="{{route('organizer.editEvent', ['event'=>$event])}}" class="flex-1 p-1  text-white cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
                                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                           <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10">  
                                       </svg>
                                   </a>
                               </div>
                           </td>
-                          
-                            
                       </tr>
-                      <!-- More table rows -->
+                      @endforeach
                   </tbody>
               </table>
               </div>

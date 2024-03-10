@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\organizerPanel\organizerController;
 use App\Http\Controllers\clientPanel\clientController;
 use App\Http\Controllers\dashboard\dashboardController;
+use App\Http\Controllers\eventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +42,18 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('admin/{category}/editCategory',[CategoryController::class, 'edit'])->name('admin.editCategory');
     Route::post('admin/{category}/updateCategory',[CategoryController::class, 'update'])->name('admin.updateCategory');
     Route::delete('admin/{category}/destroyCategory',[CategoryController::class, 'destroy'])->name('admin.detroyCategory');
+    Route::get('admin/users',[adminController::class, 'users'])->name('admin.users');
+    Route::post('admin/users/{id}/restrict', [AdminController::class, 'restrictUser'])->name('admin.restrictUsers');
 });
 
 
 Route::middleware(['auth','role:organizer'])->group(function () {
-    Route::get('organizer/home',[organizerController::class, 'index'])->name('organizer.home');
+    Route::get('organizer/home',[eventController::class, 'index'])->name('organizer.home');
+    Route::get('organizer/createEvent',[eventController::class, 'create'])->name('organizer.createEvent');
+    Route::post('organizer/storeEvent',[eventController::class, 'store'])->name('organizer.storeEvent');
+    Route::get('organizer/{event}/editEvent',[eventController::class, 'edit'])->name('organizer.editEvent');
+    Route::post('organizer/{event}/updateEvent',[eventController::class, 'update'])->name('organizer.updateEvent');
+    Route::delete('organizer/{event}/destroyEvent',[eventController::class, 'destroy'])->name('organizer.destroyEvent');
 });
 
 

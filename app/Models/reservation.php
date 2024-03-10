@@ -14,6 +14,13 @@ class reservation extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable =[
+        'client_id',
+        'event_id',
+    ];
+
+
+
     public function event():BelongsTo
     {
         return $this->belongsTo(event::class);

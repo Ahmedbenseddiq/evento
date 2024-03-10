@@ -44,6 +44,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::delete('admin/{category}/destroyCategory',[CategoryController::class, 'destroy'])->name('admin.detroyCategory');
     Route::get('admin/users',[adminController::class, 'users'])->name('admin.users');
     Route::post('admin/users/{id}/restrict', [AdminController::class, 'restrictUser'])->name('admin.restrictUsers');
+    Route::get('admin/events',[adminController::class, 'events'])->name('admin.events');
+    Route::post('admin/events/{id}/approve', [AdminController::class, 'approveEvent'])->name('admin.approveEvents');
 });
 
 
@@ -59,5 +61,6 @@ Route::middleware(['auth','role:organizer'])->group(function () {
 
 Route::middleware(['auth','role:client'])->group(function () {
     Route::get('client/home',[clientController::class, 'index'])->name('client.home');
+    Route::get('client/single',[clientController::class, 'single'])->name('client.single');
 });
 
